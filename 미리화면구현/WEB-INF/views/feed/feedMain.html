@@ -173,6 +173,41 @@
                 </div>
             </form>
 
+            <!-- 공유용 modal -->
+            <form action="#">
+                <div class="modal" id="share">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">공유하기</h4>
+                            </div>
+                
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <button style="border: none;">
+                                    <img src="img/twitterLogo.png" alt="twitter" onclick=shareTwitter(); style="width: 75px;">
+                                </button>
+                                <button style="border: none;">
+                                    <img src="img/facebookLogo.png" alt="facebook" onclick=shareKakao(); style="width: 75px;">
+                                </button>
+                                <button style="border: none;">
+                                    <img src="img/kakaoLogo.png" alt="kakao" onclick=shareKakao(); style="width: 75px;">
+                                </button>
+                            </div>
+                        
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-secondary">완료</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </form>
+
             <div style="height: 20px;" align="right">
                 <button type="button" class="btn-primary" onclick="location.href='enrollForm.fd'">글쓰기</button>
             </div>
@@ -228,7 +263,7 @@
                 <div class="inner-bar-small" align="center">
                     <button type="button" class="btn-feed-three" style="background-color: transparent; border: none;">좋아요</button> |
                     <button type="button" class="btn-feed-three" style="background-color: transparent; border: none;" onclick="viewReply();">댓글쓰기</button> |
-                    <button type="button" class="btn-feed-three" style="background-color: transparent; border: none;">공유하기</button>
+                    <button type="button" data-toggle="modal" data-target="#share" class="btn-feed-three" style="background-color: transparent; border: none;" >공유하기</button>
                 </div>
 
                 <hr class="inner-bar">
@@ -276,6 +311,19 @@
                     } else {
                         btn1.style.display = 'block';
                     }
+                }
+
+                function shareTwitter() {
+                    let sendText = $(".").html();
+                    let sendLink = "http://localhost:8007/tripism/feed/"
+                    window.open("https://twitter.com/intent/tweet?text=" + sendText + "&url=" + sendLink);
+                    console.log("트위터 이동됨")
+                }
+
+                function shareFacebook() {
+                    let sendUrl = "http://localhost:8007/tripism/feed/";
+                    window.open("http://www.facebook.com/sharer/sharer.php?u=" + sendUrl);
+                    console.log("페이스북 이동됨")
                 }
             </script>
 
